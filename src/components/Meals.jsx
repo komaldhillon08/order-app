@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Meals() {
     const [loadedMeals, setLoadedMeals] = useState([])
@@ -9,9 +9,17 @@ export default function Meals() {
         }
         const meals = await response.json();
         setLoadedMeals(meals)
+        console.log("between function");
 
     }
-    fetchMeals();
+
+    useEffect(() => {
+        console.log("effect");
+        fetchMeals();
+    }, [])
+
+
+
 
     return (
         <ul id="meals">
