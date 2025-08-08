@@ -13,7 +13,7 @@ export default function MealItems({meal}) {
                     </div>
                     <p className="meal-item-actions">
                         {/* <button>Add to Cart</button> */}
-                        <Button textOnly>Add to Cart</Button>
+                        <Button>Add to Cart</Button>
                     </p>
                 </article>
             </li>
