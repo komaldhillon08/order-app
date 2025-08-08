@@ -6,7 +6,7 @@ export default function Header() {
         <header id="main-header" >
           <div id="title" >
               <img src={logo} alt="logo"/>
-                <h1>RactFood</h1>
+                <h1>ReactFood</h1>
           </div>
           <nav>
             <Button textOnly >Cart (0)</Button>
