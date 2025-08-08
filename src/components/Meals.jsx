@@ -19,6 +19,8 @@ export default function Meals() {
         fetchMeals();
     }, [])
 
+    console.log("komal");
+    
 
 
 
