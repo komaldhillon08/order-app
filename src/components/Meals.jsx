@@ -11,19 +11,12 @@ export default function Meals() {
         const meals = await response.json();
         setLoadedMeals(meals)
         console.log("between function");
-
     }
-
     useEffect(() => {
         console.log("effect");
         fetchMeals();
     }, [])
-
     console.log("komal");
-    
-
-
-
     return (
         <ul id="meals">
             {loadedMeals.map((meal) => (

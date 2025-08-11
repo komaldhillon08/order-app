@@ -11,7 +11,6 @@ export default function Header() {
           <nav>
             <Button textOnly >Cart (0)</Button>
           </nav>
-
         </header>
 
     )
