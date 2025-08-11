@@ -72,7 +72,7 @@ export function CartContextProvider({ children }) {
         addItem,
         removeItem,
     };
-    console.log(cartContext);
+    console.log("check the somethinks ",cartContext);
     
 
     return (
