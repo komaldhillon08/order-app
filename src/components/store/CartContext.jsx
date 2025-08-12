@@ -1,16 +1,16 @@
+// CartContext.jsx
 import { useReducer, createContext } from "react";
 
 export const CartContext = createContext({
-  items: [],
-  addItem: (item) => {},
-  removeItem: (item) => {},
+    items: [],
+    addItem: () => { },
+    removeItem: () => { },
 });
-
 
 function cartReducer(state, action) {
     if (action.type === "ADD-ITEM") {
         const existingCartItemIndex = state.items.findIndex(
-            (item) => item.id === action.item.id
+            (item) => item.id === action.item.id // ❗ Fix: must be .id, not whole item
         );
 
         const updatedItems = [...state.items];
@@ -54,17 +54,11 @@ export function CartContextProvider({ children }) {
     const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] });
 
     function addItem(item) {
-        dispatchCartAction({
-            type: "ADD-ITEM",
-            item,
-        });
+        dispatchCartAction({ type: "ADD-ITEM", item });
     }
 
     function removeItem(id) {
-        dispatchCartAction({
-            type: "REMOVE-ITEM",
-            id,
-        });
+        dispatchCartAction({ type: "REMOVE-ITEM", id });
     }
 
     const cartContext = {
@@ -72,8 +66,7 @@ export function CartContextProvider({ children }) {
         addItem,
         removeItem,
     };
-    console.log("check the somethinks ",cartContext);
-    
+    console.log(cartContext);
 
     return (
         <CartContext.Provider value={cartContext}>
@@ -81,5 +74,3 @@ export function CartContextProvider({ children }) {
         </CartContext.Provider>
     );
 }
-
-export default CartContext;
