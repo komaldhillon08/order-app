@@ -14,6 +14,9 @@ function cartReducer(state, action) {
         );
         
         const updatedItems = [...state.items];
+        console.log("check item >>>>>" , existingCartItemIndex);
+        console.log("check updatedItems and state >>>>>" , updatedItems , state);
+        
         if (existingCartItemIndex > -1) {
             const existingItem = state.items[existingCartItemIndex];
          
