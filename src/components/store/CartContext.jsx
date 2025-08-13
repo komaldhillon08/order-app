@@ -12,14 +12,14 @@ function cartReducer(state, action) {
         const existingCartItemIndex = state.items.findIndex(
             (item) => item.id === action.item.id
         );
-        
+
         const updatedItems = [...state.items];
-        console.log("check item >>>>>" , existingCartItemIndex);
-        console.log("check updatedItems and state >>>>>" , updatedItems , state);
-        
+        console.log("check item >>>>>", existingCartItemIndex);
+        console.log("check updatedItems and state >>>>>", updatedItems, state);
+
         if (existingCartItemIndex > -1) {
             const existingItem = state.items[existingCartItemIndex];
-         
+
             const updatedItem = {
                 ...existingItem,
                 quantity: existingItem.quantity + 1,
