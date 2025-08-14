@@ -20,7 +20,7 @@ export default function Checkout() {
 
     return (
         <>
-            <Modal open={userProgressCtx.progress === "Checkout"} >
+            <Modal open={userProgressCtx.progress === "Checkout"} onClose={handleClose} >
                 <form >
                     <h2>Checkout</h2>
                     <p>Total Amount : {currencyFormatter.format(cartTotal)}</p>
@@ -29,7 +29,7 @@ export default function Checkout() {
                     <Input label="Street" type="text" id="street" />
                     <div className="control-row">
                         <Input label="Postal Code" type="text" id="postal-code" />
-                        <Input/>
+                        <Input label="city" type="text" id="city" />
                     </div>
                     <p className="modal-actions">
                         <Button textOnly> Close</Button> 
