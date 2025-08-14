@@ -9,19 +9,43 @@ import UserProgressContext from "./store/UserProgressContext";
 
 export default function Checkout() {
     const cartCtx = useContext(CartContext)
-    const userProgressCtx =   useContext(UserProgressContext)
+    const userProgressCtx = useContext(UserProgressContext)
 
     const cartTotal = cartCtx.items.reduce((totlePrice, item) => totlePrice + item.quantity * item.price, 0)
 
     function handleClose() {
         userProgressCtx.hideCheckOut()
     }
-    
+
+    // hendle form 
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const fb = new FormData(event.target)
+        const customerDate = Object.fromEntries(fb.entries())
+
+
+
+        fetch("http://localhost:3000/orders", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                order: {
+                    items : cartCtx.items,
+                    customer : customerDate 
+                }
+            })
+        })
+
+    }
+
 
     return (
         <>
             <Modal open={userProgressCtx.progress === "Checkout"} onClose={handleClose} >
-                <form >
+                <form onSubmit={handleSubmit} >
                     <h2>Checkout</h2>
                     <p>Total Amount : {currencyFormatter.format(cartTotal)}</p>
                     <Input label="Full Name" type="text" id="full-name" />
@@ -32,8 +56,8 @@ export default function Checkout() {
                         <Input label="city" type="text" id="city" />
                     </div>
                     <p className="modal-actions">
-                        <Button textOnly> Close</Button> 
-                        <Button textOnly> Submit Order</Button> 
+                        <Button textOnly> Close</Button>
+                        <Button textOnly> Submit Order</Button>
                     </p>
                 </form>
 
